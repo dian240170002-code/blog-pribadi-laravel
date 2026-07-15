@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CommentController;
 
 // =====================
 // HALAMAN PUBLIK
@@ -16,6 +17,10 @@ Route::get('/', [PublicController::class, 'index'])->name('blog.index');
 
 // Detail Artikel
 Route::get('/blog/{slug}', [PublicController::class, 'show'])->name('blog.show');
+
+// Komentar (Tanpa Login)
+Route::post('/blog/{article}/comment', [CommentController::class, 'store'])
+    ->name('comments.store');
 
 // =====================
 // DASHBOARD
